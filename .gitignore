@@ -1,0 +1,54 @@
+# Flutter / Dart common
+**/.dart_tool/
+**/build/
+**/.packages
+**/.flutter-plugins
+**/.flutter-plugins-dependencies
+**/.idea/
+**/.vscode/
+**/ios/Flutter/.last_build_id
+**/pubspec_overrides.yaml
+
+# Generated files by Flutter
+.flutter-plugins
+.flutter-plugins-dependencies
+.packages
+
+# Android Studio / IntelliJ
+*.iml
+*.ipr
+*.iws
+.idea/
+
+# VS Code settings
+.vscode/
+
+# macOS
+.DS_Store
+
+# Logs
+*.log
+
+# Miscellaneous
+*.class
+*.pyc
+*.swp
+
+# Melos specific
+.melos_tool/
+
+# Firebase generated files (optional, 필요하면 활성화)
+# firebase-debug.log
+
+# Other common ignores
+*.lock
+*.tmp
+
+# Environment variable files
+.env.secret
+
+# Generated files by Flutter & build_runner
+# *.g.dart : json_serializable, retrofit, drift 등에서 자동 생성
+# *.freezed.dart : freezed 패키지에서 자동 생성
+*.g.dart
+*.freezed.dart
