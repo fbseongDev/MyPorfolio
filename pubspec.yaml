@@ -13,7 +13,6 @@ dev_dependencies:
 
 melos:
   scripts:
-
     # 전체 모듈 테스트
     test:
       run: melos exec --depends-on flutter_test -- flutter test
@@ -29,6 +28,15 @@ melos:
         melos exec --depends-on app --ignore "test" -- flutter build appbundle
         melos run open_build
       description: Build app bundle
+
+    deploy:web:
+      description: Flutter web GitHub Pages Deploy
+      run: |
+        cd packages/portfolio_web
+        flutter build web --base-href "/레포이름/"
+        cd ../../
+        rm -rf docs
+        cp -r packages/portfolio_web/build/web docs  
 
   versionOverrides:
     # dev_dependencies
