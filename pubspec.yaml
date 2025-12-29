@@ -1,0 +1,38 @@
+name: my_portfolio
+version: 1.0.1
+description: "이혜성의 포트폴리오"
+
+workspace:
+  - apps/portfolio_web
+
+environment:
+  sdk: 3.9.2
+
+dev_dependencies:
+  melos: ^7.3.0
+
+melos:
+  scripts:
+
+    # 전체 모듈 테스트
+    test:
+      run: melos exec --depends-on flutter_test -- flutter test
+
+    # 앱 전체 번들 패키지 열기
+    open_build:
+      run: melos exec --depends-on app --ignore "test" -- open "build/app/outputs/bundle/release"
+      description: Open app bundle
+
+    # 앱 전체 번들 생성
+    build:
+      run: |
+        melos exec --depends-on app --ignore "test" -- flutter build appbundle
+        melos run open_build
+      description: Build app bundle
+
+  versionOverrides:
+    # dev_dependencies
+    flutter_lints: ^5.0.0
+
+    # flutter commons
+    cupertino_icons: ^1.0.8
