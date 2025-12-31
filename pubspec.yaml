@@ -4,6 +4,7 @@ description: "이혜성의 포트폴리오"
 
 workspace:
   - apps/portfolio_web
+  - packages/design_system
 
 environment:
   sdk: ">=3.9.2 <4.0.0"

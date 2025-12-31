@@ -1,5 +1,5 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/presentation/ui/design_system/glass_card.dart';
 
 /// 특기 소개 Section
 class GlassFeatureSection extends StatelessWidget {

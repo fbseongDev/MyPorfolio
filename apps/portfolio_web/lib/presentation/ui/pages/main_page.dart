@@ -1,8 +1,8 @@
+import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
 
 import '../heroes/main_hero.dart';
-import '../design_system/ambient_circle.dart';
 import '../widgets/glass_feature_section.dart';
 
 /// 메인 페이지
