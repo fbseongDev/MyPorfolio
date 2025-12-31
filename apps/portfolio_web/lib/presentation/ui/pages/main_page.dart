@@ -4,6 +4,7 @@ import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart'
 
 import '../heroes/main_hero.dart';
 import '../widgets/capabilities_section.dart';
+import '../widgets/skill_stack_section.dart';
 
 /// 메인 페이지
 ///
@@ -48,6 +49,7 @@ class _MainPageState extends State<MainPage> {
             children: [
               MainHero(progress: getProgress(0, 500)),
               CapabilitiesSection(progress: getProgress(300, 800)),
+              SkillStackSection(progress: getProgress(600, 1000)),
               ProjectGridSection(progress: getProgress(800, 1400)),
               const SizedBox(height: 300),
             ],

@@ -1,5 +1,5 @@
 import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide Opacity, Container;
 
 /// 특기 소개 Section
 class CapabilitiesSection extends StatelessWidget {
@@ -22,20 +22,17 @@ class CapabilitiesSection extends StatelessWidget {
             spacing: 20,
             runSpacing: 20,
             children: [
-              GlassCard(
+              _capabilitiesCardBuilder(
                 title: "Smooth\nAnimations",
                 icon: Icons.auto_awesome,
-                p: progress,
               ),
-              GlassCard(
+              _capabilitiesCardBuilder(
                 title: "Clean\nArchitecture",
                 icon: Icons.architecture,
-                p: progress,
               ),
-              GlassCard(
+              _capabilitiesCardBuilder(
                 title: "Fast\nPerformance",
                 icon: Icons.bolt,
-                p: progress,
               ),
             ],
           ),
@@ -43,4 +40,31 @@ class CapabilitiesSection extends StatelessWidget {
       ),
     );
   }
+
+  Widget _capabilitiesCardBuilder({
+    required String title,
+    required IconData icon,
+  }) => Builder(
+    builder: (context) {
+      return Opacity(
+        opacity: progress,
+        child: Container(
+          width: 160,
+          height: 200,
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 40, color: Colors.blueAccent),
+              const SizedBox(height: 15),
+              Text(
+                title,
+                textAlign: TextAlign.center,
+                style: TextStyle(fontSize: 16),
+              ),
+            ],
+          ),
+        ),
+      );
+    },
+  );
 }
