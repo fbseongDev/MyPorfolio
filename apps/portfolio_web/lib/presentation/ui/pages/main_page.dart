@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
 
 import '../heroes/main_hero.dart';
-import '../widgets/glass_feature_section.dart';
+import '../widgets/capabilities_section.dart';
 
 /// 메인 페이지
 ///
@@ -47,7 +47,7 @@ class _MainPageState extends State<MainPage> {
           child: Column(
             children: [
               MainHero(progress: getProgress(0, 500)),
-              GlassFeatureSection(progress: getProgress(300, 800)),
+              CapabilitiesSection(progress: getProgress(300, 800)),
               ProjectGridSection(progress: getProgress(800, 1400)),
               const SizedBox(height: 300),
             ],

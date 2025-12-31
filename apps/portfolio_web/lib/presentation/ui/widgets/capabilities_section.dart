@@ -2,10 +2,10 @@ import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
 
 /// 특기 소개 Section
-class GlassFeatureSection extends StatelessWidget {
+class CapabilitiesSection extends StatelessWidget {
   final double progress;
 
-  const GlassFeatureSection({super.key, required this.progress});
+  const CapabilitiesSection({super.key, required this.progress});
 
   @override
   Widget build(BuildContext context) {
