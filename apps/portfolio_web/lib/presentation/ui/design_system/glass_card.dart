@@ -2,6 +2,7 @@ import 'dart:ui';
 
 import 'package:flutter/material.dart';
 
+/// GlassMorphism 디자인 Card
 class GlassCard extends StatelessWidget {
   final String title;
   final IconData icon;

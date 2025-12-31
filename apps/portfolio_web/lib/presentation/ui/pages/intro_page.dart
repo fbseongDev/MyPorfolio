@@ -3,6 +3,9 @@ import 'package:flutter/material.dart';
 import '../heroes/intro_hero.dart';
 import 'main_page.dart';
 
+/// 접속후 첫 페이지
+///
+/// 사이트 로딩 애니메이션 구현
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
 

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
 
 import '../heroes/main_hero.dart';
+import '../design_system/ambient_circle.dart';
+import '../widgets/glass_feature_section.dart';
 
 /// 메인 페이지
 ///
@@ -11,12 +14,8 @@ class MainPage extends StatefulWidget {
   @override
   State<MainPage> createState() => _MainPageState();
 }
-
 class _MainPageState extends State<MainPage> {
-  // [MainPage]의 페이지 전체의 스크롤을 담당
   final ScrollController _scrollController = ScrollController();
-
-  // [_scrollController]의 offest
   double _offset = 0;
 
   @override
@@ -25,7 +24,6 @@ class _MainPageState extends State<MainPage> {
     _scrollController.addListener(() => setState(() => _offset = _scrollController.offset));
   }
 
-  // 현재 스크롤 비율을 계산
   double getProgress(double start, double end) {
     return ((_offset - start) / (end - start)).clamp(0.0, 1.0);
   }
@@ -34,12 +32,23 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Stack(
       children: [
+        Positioned(
+          top: -100 - (_offset * 0.2),
+          left: -100,
+          child: AmbientCircle(color: Colors.blue.withOpacity(0.2), size: 400),
+        ),
+        Positioned(
+          bottom: 100 + (_offset * 0.1),
+          right: -50,
+          child: AmbientCircle(color: Colors.purple.withOpacity(0.2), size: 300),
+        ),
         SingleChildScrollView(
           controller: _scrollController,
           child: Column(
             children: [
               MainHero(progress: getProgress(0, 500)),
-
+              GlassFeatureSection(progress: getProgress(300, 800)),
+              ProjectGridSection(progress: getProgress(800, 1400)),
               const SizedBox(height: 300),
             ],
           ),

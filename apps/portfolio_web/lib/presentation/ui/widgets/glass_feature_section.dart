@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/presentation/ui/widgets/glass_card.dart';
+import 'package:portfolio_web/presentation/ui/design_system/glass_card.dart';
 
+/// 특기 소개 Section
 class GlassFeatureSection extends StatelessWidget {
   final double progress;
 
