@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:portfolio_web/presentation/pages/main_page.dart';
 
-import '../helpers/intro_hero.dart';
+import '../heroes/intro_hero.dart';
+import 'main_page.dart';
 
 class IntroPage extends StatefulWidget {
   const IntroPage({super.key});
