@@ -11,7 +11,6 @@ class SkillStackSection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.zero,
-      //const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -47,22 +46,22 @@ class SkillStackSection extends StatelessWidget {
             runSpacing: 40,
             children: [
               _stackItemBuilder(
-                "Frontend",
-                ["Flutter", "Dart", "React", "Next.js"],
-                [0.95, 0.9, 0.7, 0.6],
-                Colors.blueAccent,
+                title: "Frontend",
+                skills: ["Flutter", "Dart", "React", "Next.js"],
+                levels: [0.95, 0.9, 0.7, 0.6],
+                accentColor: Colors.blueAccent,
               ),
               _stackItemBuilder(
-                "Backend & DB",
-                ["Firebase", "Node.js", "PostgreSQL"],
-                [0.85, 0.65, 0.75],
-                Colors.greenAccent,
+                title: "Backend & DB",
+                skills: ["Firebase", "Node.js", "PostgreSQL"],
+                levels: [0.85, 0.65, 0.75],
+                accentColor: Colors.greenAccent,
               ),
               _stackItemBuilder(
-                "Tools & Others",
-                ["Git", "Figma", "Docker", "CI/CD"],
-                [0.9, 0.8, 0.6, 0.55],
-                Colors.orangeAccent,
+                title: "Tools & Others",
+                skills: ["Git", "Figma", "Docker", "CI/CD"],
+                levels: [0.9, 0.8, 0.6, 0.55],
+                accentColor: Colors.orangeAccent,
               ),
             ],
           ),
@@ -71,12 +70,12 @@ class SkillStackSection extends StatelessWidget {
     );
   }
 
-  Widget _stackItemBuilder(
-    String title,
-    List<String> skills,
-    List<double> levels,
-    Color accentColor,
-  ) => Builder(
+  Widget _stackItemBuilder({
+    required final String title,
+    required final List<String> skills,
+    required final List<double> levels,
+    required final Color accentColor,
+  }) => Builder(
     builder: (context) {
       return Opacity(
         opacity: progress,
@@ -111,74 +110,81 @@ class SkillStackSection extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 25),
-              ListView.separated(
-                itemCount: skills.length,
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemBuilder: (context, index) {
-                  return Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Text(
-                              skills[index],
-                              style: const TextStyle(
-                                color: Colors.white70,
-                                fontSize: 14,
-                              ),
-                            ),
-                            Text(
-                              "${(levels[index] * 100).toInt()}%",
-                              style: TextStyle(
-                                color: accentColor.withOpacity(0.8),
-                                fontSize: 12,
-                                fontWeight: FontWeight.bold,
-                              ),
-                            ),
-                          ],
-                        ),
-                        const SizedBox(height: 8),
-                        Stack(
-                          children: [
-                            Container(
-                              height: 4,
-                              width: double.infinity,
-                              decoration: BoxDecoration(
-                                color: Colors.white10,
-                                borderRadius: BorderRadius.circular(2),
-                              ),
-                            ),
-                            AnimatedContainer(
-                              duration: const Duration(milliseconds: 1500),
-                              height: 4,
-                              width: 250 * (levels[index] * progress),
-                              decoration: BoxDecoration(
-                                color: accentColor,
-                                borderRadius: BorderRadius.circular(2),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: accentColor.withOpacity(0.3),
-                                    blurRadius: 4,
-                                    spreadRadius: 1,
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                      ],
-                  );
-                },
-                separatorBuilder: (_,index){
-                  return SizedBox(height: 5,);
-                },
+              _stackDetailListBuilder(
+                skills: skills,
+                levels: levels,
+                accentColor: accentColor,
               ),
             ],
           ),
         ),
       );
+    },
+  );
+
+  Widget _stackDetailListBuilder({
+    required final List<String> skills,
+    required final List<double> levels,
+    required final Color accentColor,
+  }) => ListView.separated(
+    itemCount: skills.length,
+    shrinkWrap: true,
+    physics: NeverScrollableScrollPhysics(),
+    itemBuilder: (context, index) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                skills[index],
+                style: const TextStyle(color: Colors.white70, fontSize: 14),
+              ),
+              Text(
+                "${(levels[index] * 100).toInt()}%",
+                style: TextStyle(
+                  color: accentColor.withOpacity(0.8),
+                  fontSize: 12,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Stack(
+            children: [
+              Container(
+                height: 4,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white10,
+                  borderRadius: BorderRadius.circular(2),
+                ),
+              ),
+              AnimatedContainer(
+                duration: const Duration(milliseconds: 1500),
+                height: 4,
+                width: 250 * (levels[index] * progress),
+                decoration: BoxDecoration(
+                  color: accentColor,
+                  borderRadius: BorderRadius.circular(2),
+                  boxShadow: [
+                    BoxShadow(
+                      color: accentColor.withOpacity(0.3),
+                      blurRadius: 4,
+                      spreadRadius: 1,
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ],
+      );
+    },
+    separatorBuilder: (_, index) {
+      return SizedBox(height: 5);
     },
   );
 }

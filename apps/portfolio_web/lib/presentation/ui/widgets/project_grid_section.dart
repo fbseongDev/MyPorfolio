@@ -19,16 +19,25 @@ class ProjectGridSection extends StatelessWidget {
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 30),
-          ...List.generate(2, (index) => _projectItemBuilder(index, progress)),
+          ListView.builder(
+            itemCount: 2,
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemBuilder: (context, index) =>
+                _projectItemBuilder(index: index, progress: progress),
+          ),
         ],
       ),
     );
   }
 
-  Widget _projectItemBuilder(int index, double p) => Builder(
+  Widget _projectItemBuilder({
+    required final int index,
+    required final double progress,
+  }) => Builder(
     builder: (context) {
       return Opacity(
-        opacity: p,
+        opacity: progress,
         child: Container(
           margin: const EdgeInsets.only(bottom: 20),
           height: 250,

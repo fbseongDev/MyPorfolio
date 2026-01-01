@@ -1,5 +1,6 @@
 import 'package:design_system/design_system.dart';
 import 'package:flutter/material.dart';
+import 'package:portfolio_web/presentation/ui/widgets/architecture_grid_section.dart';
 import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
 
 import '../heroes/main_hero.dart';
@@ -15,6 +16,7 @@ class MainPage extends StatefulWidget {
   @override
   State<MainPage> createState() => _MainPageState();
 }
+
 class _MainPageState extends State<MainPage> {
   final ScrollController _scrollController = ScrollController();
   double _offset = 0;
@@ -22,10 +24,12 @@ class _MainPageState extends State<MainPage> {
   @override
   void initState() {
     super.initState();
-    _scrollController.addListener(() => setState(() => _offset = _scrollController.offset));
+    _scrollController.addListener(
+      () => setState(() => _offset = _scrollController.offset),
+    );
   }
 
-  double getProgress(double start, double end) {
+  double getProgress(final double start, final double end) {
     return ((_offset - start) / (end - start)).clamp(0.0, 1.0);
   }
 
@@ -41,7 +45,10 @@ class _MainPageState extends State<MainPage> {
         Positioned(
           bottom: 100 + (_offset * 0.1),
           right: -50,
-          child: AmbientCircle(color: Colors.purple.withOpacity(0.2), size: 300),
+          child: AmbientCircle(
+            color: Colors.purple.withOpacity(0.2),
+            size: 300,
+          ),
         ),
         SingleChildScrollView(
           controller: _scrollController,
@@ -51,6 +58,7 @@ class _MainPageState extends State<MainPage> {
               CapabilitiesSection(progress: getProgress(300, 800)),
               SkillStackSection(progress: getProgress(600, 1000)),
               ProjectGridSection(progress: getProgress(800, 1400)),
+              ArchitectureGridSection(progress: getProgress(800, 1400)),
               const SizedBox(height: 300),
             ],
           ),

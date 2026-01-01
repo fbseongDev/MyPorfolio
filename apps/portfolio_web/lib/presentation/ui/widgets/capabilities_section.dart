@@ -42,8 +42,8 @@ class CapabilitiesSection extends StatelessWidget {
   }
 
   Widget _capabilitiesCardBuilder({
-    required String title,
-    required IconData icon,
+    required final String title,
+    required final IconData icon,
   }) => Builder(
     builder: (context) {
       return Opacity(
