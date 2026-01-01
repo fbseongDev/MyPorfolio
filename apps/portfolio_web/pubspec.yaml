@@ -2,16 +2,13 @@ name: portfolio_web
 description: "이혜성의 포트폴리오 root app"
 resolution: workspace
 
-version: 1.0.1+2
+version: 1.0.3+3
 
 environment:
   sdk: ^3.10.3
 
 dependencies:
-  flutter:
-    sdk: flutter
-  design_system:
-
+  convention:
   cupertino_icons:
 
 dev_dependencies:

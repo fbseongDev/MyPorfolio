@@ -4,6 +4,7 @@ description: "이혜성의 포트폴리오"
 
 workspace:
   - apps/portfolio_web
+  - packages/convention
   - packages/design_system
 
 environment:
