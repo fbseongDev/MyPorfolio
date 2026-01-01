@@ -30,13 +30,13 @@ class Container extends m.StatelessWidget {
   @override
   m.Widget build(m.BuildContext context) {
     return m.Container(
-      padding: padding,
       margin: margin,
       child: m.ClipRRect(
         borderRadius: decoration?.borderRadius ?? m.BorderRadius.circular(20),
         child: m.BackdropFilter(
           filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
           child: m.Container(
+            padding: padding,
             width: width,
             height: height,
             decoration: decoration,

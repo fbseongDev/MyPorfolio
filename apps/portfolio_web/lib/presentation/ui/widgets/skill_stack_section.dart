@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart' hide Container,Opacity;
+import 'package:flutter/material.dart' hide Container, Opacity;
 import 'package:design_system/design_system.dart';
 
 /// 기술 스택 Section
@@ -10,7 +10,8 @@ class SkillStackSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
+      padding: EdgeInsets.zero,
+      //const EdgeInsets.symmetric(horizontal: 24, vertical: 80),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
@@ -81,27 +82,24 @@ class SkillStackSection extends StatelessWidget {
         opacity: progress,
         child: Container(
           width: 300,
-          padding: const EdgeInsets.all(24),
+          padding: const EdgeInsets.all(16),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              // 기술 스택 대분류
               Row(
                 children: [
+                  // 텍스트 가운뎃 점
                   Container(
                     width: 12,
                     height: 12,
                     decoration: BoxDecoration(
                       color: accentColor,
                       shape: BoxShape.circle,
-                      boxShadow: [
-                        BoxShadow(
-                          color: accentColor.withOpacity(0.5),
-                          blurRadius: 8,
-                        ),
-                      ],
                     ),
                   ),
                   const SizedBox(width: 10),
+                  // 텍스트
                   Text(
                     title,
                     style: const TextStyle(
@@ -113,65 +111,70 @@ class SkillStackSection extends StatelessWidget {
                 ],
               ),
               const SizedBox(height: 25),
-              ...List.generate(skills.length, (index) {
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 18),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            skills[index],
-                            style: const TextStyle(
-                              color: Colors.white70,
-                              fontSize: 14,
+              ListView.separated(
+                itemCount: skills.length,
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemBuilder: (context, index) {
+                  return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              skills[index],
+                              style: const TextStyle(
+                                color: Colors.white70,
+                                fontSize: 14,
+                              ),
                             ),
-                          ),
-                          Text(
-                            "${(levels[index] * 100).toInt()}%",
-                            style: TextStyle(
-                              color: accentColor.withOpacity(0.8),
-                              fontSize: 12,
-                              fontWeight: FontWeight.bold,
+                            Text(
+                              "${(levels[index] * 100).toInt()}%",
+                              style: TextStyle(
+                                color: accentColor.withOpacity(0.8),
+                                fontSize: 12,
+                                fontWeight: FontWeight.bold,
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      Stack(
-                        children: [
-                          Container(
-                            height: 4,
-                            width: double.infinity,
-                            decoration: BoxDecoration(
-                              color: Colors.white10,
-                              borderRadius: BorderRadius.circular(2),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Stack(
+                          children: [
+                            Container(
+                              height: 4,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                color: Colors.white10,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
                             ),
-                          ),
-                          AnimatedContainer(
-                            duration: const Duration(milliseconds: 1500),
-                            height: 4,
-                            width: 250 * (levels[index] * progress),
-                            decoration: BoxDecoration(
-                              color: accentColor,
-                              borderRadius: BorderRadius.circular(2),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: accentColor.withOpacity(0.3),
-                                  blurRadius: 4,
-                                  spreadRadius: 1,
-                                ),
-                              ],
+                            AnimatedContainer(
+                              duration: const Duration(milliseconds: 1500),
+                              height: 4,
+                              width: 250 * (levels[index] * progress),
+                              decoration: BoxDecoration(
+                                color: accentColor,
+                                borderRadius: BorderRadius.circular(2),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: accentColor.withOpacity(0.3),
+                                    blurRadius: 4,
+                                    spreadRadius: 1,
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
-                );
-              }),
+                          ],
+                        ),
+                      ],
+                  );
+                },
+                separatorBuilder: (_,index){
+                  return SizedBox(height: 5,);
+                },
+              ),
             ],
           ),
         ),
