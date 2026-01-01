@@ -35,16 +35,15 @@ class ArchitectureGridSection extends StatelessWidget {
             opacity: progress,
             child: Container(
               margin: const EdgeInsets.only(bottom: 20),
-              height: 250,
               width: double.infinity,
               child: Stack(
                 children: [
                   Positioned(
                     right: -20,
-                    bottom: -20,
+                    top: -20,
                     child: Icon(
-                      Icons.app_shortcut,
-                      size: 200,
+                      Icons.architecture,
+                      size: 100,
                       color: Colors.white.withOpacity(0.03),
                     ),
                   ),
@@ -53,13 +52,6 @@ class ArchitectureGridSection extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          "Project 0${index + 1}",
-                          style: const TextStyle(
-                            color: Colors.blueAccent,
-                            fontWeight: FontWeight.bold,
-                          ),
-                        ),
                         const Text(
                           "혁신적인 UI/UX 프로젝트",
                           style: TextStyle(
@@ -67,7 +59,7 @@ class ArchitectureGridSection extends StatelessWidget {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const Spacer(),
+                        SizedBox(height: 16,),
                         TextButton(
                           onPressed: () {},
                           child: const Text(
