@@ -1,5 +1,4 @@
-import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart' hide Container, Opacity;
+import 'package:convention/ui.dart';
 import 'package:portfolio_web/presentation/ui/details/architecture/import_convention_architecture_detail.dart';
 import 'package:portfolio_web/presentation/ui/ui_model/architecture_ui_model.dart';
 
@@ -78,17 +77,19 @@ class ArchitectureGridSection extends StatelessWidget {
                       architecture.description,
                       style: const TextStyle(
                         fontSize: 16,
-                        fontWeight: FontWeight.w100,
+                        fontWeight: FontWeight.thin,
                       ),
                     ),
                     SizedBox(height: 16),
                     TextButton(
                       onPressed: () {
-
+                        showDialog(context: context, builder: (context){
+                          return architecture.detailPage;
+                        });
                       },
                       child: const Text(
                         "View Case Study →",
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],

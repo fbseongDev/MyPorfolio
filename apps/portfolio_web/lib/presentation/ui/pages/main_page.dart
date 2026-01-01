@@ -1,5 +1,4 @@
-import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart';
+import 'package:convention/ui.dart';
 import 'package:portfolio_web/presentation/ui/widgets/architecture_grid_section.dart';
 import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
 
@@ -50,6 +49,7 @@ class _MainPageState extends State<MainPage> {
             size: 300,
           ),
         ),
+        // todo:: 이거 ListView로 바꿔 보기
         SingleChildScrollView(
           controller: _scrollController,
           child: Column(

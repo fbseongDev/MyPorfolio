@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:convention/ui.dart';
 
 import '../heroes/intro_hero.dart';
 import 'main_page.dart';

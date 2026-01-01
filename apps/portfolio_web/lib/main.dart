@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:convention/main.dart';
 import 'package:portfolio_web/portfolio_app.dart';
 
 void main() {

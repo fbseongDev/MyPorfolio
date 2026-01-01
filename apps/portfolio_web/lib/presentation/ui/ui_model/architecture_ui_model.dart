@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:convention/model.dart';
 
 @immutable
 final class ArchitectureUiModel {

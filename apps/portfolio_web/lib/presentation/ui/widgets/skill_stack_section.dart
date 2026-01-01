@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart' hide Container, Opacity;
-import 'package:design_system/design_system.dart';
+import 'package:convention/ui.dart';
 
 /// 기술 스택 Section
 class SkillStackSection extends StatelessWidget {
@@ -16,27 +15,24 @@ class SkillStackSection extends StatelessWidget {
         children: [
           Opacity(
             opacity: progress,
-            child: Transform.translate(
-              offset: Offset(0, 20 * (1 - progress)),
-              child: const Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    "Technical Mastery",
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -1,
-                      color: Colors.white,
-                    ),
+            child: const Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  "Technical Mastery",
+                  style: TextStyle(
+                    fontSize: 32,
+                    fontWeight: FontWeight.extraBold,
+                    letterSpacing: -1,
+                    color: Colors.white,
                   ),
-                  SizedBox(height: 8),
-                  Text(
-                    "꾸준히 연마해온 나의 무기들입니다.",
-                    style: TextStyle(color: Colors.white54, fontSize: 16),
-                  ),
-                ],
-              ),
+                ),
+                SizedBox(height: 8),
+                Text(
+                  "꾸준히 연마해온 나의 무기들입니다.",
+                  style: TextStyle(color: Colors.lightGray, fontSize: 16),
+                ),
+              ],
             ),
           ),
           const SizedBox(height: 50),
@@ -49,19 +45,19 @@ class SkillStackSection extends StatelessWidget {
                 title: "Frontend",
                 skills: ["Flutter", "Dart", "React", "Next.js"],
                 levels: [0.95, 0.9, 0.7, 0.6],
-                accentColor: Colors.blueAccent,
+                accentColor: Colors.blue,
               ),
               _stackItemBuilder(
                 title: "Backend & DB",
                 skills: ["Firebase", "Node.js", "PostgreSQL"],
                 levels: [0.85, 0.65, 0.75],
-                accentColor: Colors.greenAccent,
+                accentColor: Colors.green,
               ),
               _stackItemBuilder(
                 title: "Tools & Others",
                 skills: ["Git", "Figma", "Docker", "CI/CD"],
                 levels: [0.9, 0.8, 0.6, 0.55],
-                accentColor: Colors.orangeAccent,
+                accentColor: Colors.orange,
               ),
             ],
           ),
@@ -139,7 +135,7 @@ class SkillStackSection extends StatelessWidget {
             children: [
               Text(
                 skills[index],
-                style: const TextStyle(color: Colors.white70, fontSize: 14),
+                style: const TextStyle(color: Colors.lightGray, fontSize: 14),
               ),
               Text(
                 "${(levels[index] * 100).toInt()}%",
@@ -158,8 +154,8 @@ class SkillStackSection extends StatelessWidget {
                 height: 4,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white10,
-                  borderRadius: BorderRadius.circular(2),
+                  color: Colors.white.withAlpha(10),
+                  borderRadius: BorderRadius.all.max,
                 ),
               ),
               AnimatedContainer(
@@ -168,7 +164,7 @@ class SkillStackSection extends StatelessWidget {
                 width: 250 * (levels[index] * progress),
                 decoration: BoxDecoration(
                   color: accentColor,
-                  borderRadius: BorderRadius.circular(2),
+                  borderRadius: BorderRadius.all.max,
                   boxShadow: [
                     BoxShadow(
                       color: accentColor.withOpacity(0.3),

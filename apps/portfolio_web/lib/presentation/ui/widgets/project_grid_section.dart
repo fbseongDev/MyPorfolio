@@ -1,5 +1,4 @@
-import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart' hide Container, Opacity;
+import 'package:convention/ui.dart';
 
 /// 프로젝트 소개 Section
 class ProjectGridSection extends StatelessWidget {
@@ -61,7 +60,7 @@ class ProjectGridSection extends StatelessWidget {
                     Text(
                       "Project 0${index + 1}",
                       style: const TextStyle(
-                        color: Colors.blueAccent,
+                        color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
@@ -77,7 +76,7 @@ class ProjectGridSection extends StatelessWidget {
                       onPressed: () {},
                       child: const Text(
                         "View Case Study →",
-                        style: TextStyle(color: Colors.white70),
+                        style: TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],

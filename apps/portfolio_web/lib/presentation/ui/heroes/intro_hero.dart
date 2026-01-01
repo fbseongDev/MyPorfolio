@@ -1,25 +1,31 @@
-import 'dart:ui';
-
-import 'package:flutter/material.dart';
+import 'package:convention/ui.dart';
 
 class IntroHero extends StatefulWidget {
   final VoidCallback onFinish;
+
   const IntroHero({super.key, required this.onFinish});
 
   @override
   State<IntroHero> createState() => _IntroHeroState();
 }
 
-class _IntroHeroState extends State<IntroHero> with SingleTickerProviderStateMixin {
+class _IntroHeroState extends State<IntroHero>
+    with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _blurAnimation;
 
   @override
   void initState() {
     super.initState();
-    _controller = AnimationController(vsync: this, duration: const Duration(milliseconds: 2500));
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 2500),
+    );
     _blurAnimation = Tween<double>(begin: 20, end: 0).animate(
-      CurvedAnimation(parent: _controller, curve: const Interval(0.0, 0.6, curve: Curves.easeOut)),
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.0, 0.6, curve: Curves.easeOut),
+      ),
     );
     _controller.forward();
     Future.delayed(const Duration(milliseconds: 3500), widget.onFinish);
@@ -38,7 +44,10 @@ class _IntroHeroState extends State<IntroHero> with SingleTickerProviderStateMix
       builder: (context, child) {
         return Center(
           child: ImageFiltered(
-            imageFilter: ImageFilter.blur(sigmaX: _blurAnimation.value, sigmaY: _blurAnimation.value),
+            imageFilter: ImageFilter.blur(
+              sigmaX: _blurAnimation.value,
+              sigmaY: _blurAnimation.value,
+            ),
             child: Opacity(
               opacity: _controller.value.clamp(0.0, 1.0),
               child: Column(
@@ -48,7 +57,7 @@ class _IntroHeroState extends State<IntroHero> with SingleTickerProviderStateMix
                     'HYESEONG',
                     style: TextStyle(
                       fontSize: 80,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.extraBold,
                       letterSpacing: 10,
                       color: Colors.white,
                     ),
@@ -56,7 +65,7 @@ class _IntroHeroState extends State<IntroHero> with SingleTickerProviderStateMix
                   Container(
                     height: 2,
                     width: 100 * _controller.value,
-                    color: Colors.blueAccent,
+                    decoration: BoxDecoration(color: Colors.blue),
                   ),
                 ],
               ),

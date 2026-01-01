@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:convention/ui.dart';
 
 class MainHero extends StatelessWidget {
   final double progress;

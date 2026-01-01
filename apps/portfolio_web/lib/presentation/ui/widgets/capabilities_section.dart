@@ -1,5 +1,4 @@
-import 'package:design_system/design_system.dart';
-import 'package:flutter/material.dart' hide Opacity, Container;
+import 'package:convention/ui.dart';
 
 /// 특기 소개 Section
 class CapabilitiesSection extends StatelessWidget {
@@ -54,7 +53,7 @@ class CapabilitiesSection extends StatelessWidget {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 40, color: Colors.blueAccent),
+              Icon(icon, size: 40, color: Colors.blue),
               const SizedBox(height: 15),
               Text(
                 title,

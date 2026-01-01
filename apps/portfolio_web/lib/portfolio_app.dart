@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:convention/app.dart';
 import 'package:portfolio_web/presentation/ui/pages/intro_page.dart';
 
 class PortfolioApp extends StatelessWidget {

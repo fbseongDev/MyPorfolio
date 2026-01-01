@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+import 'package:convention/ui.dart';
 
 class LtdArchitectureDetail extends StatelessWidget{
   const LtdArchitectureDetail({super.key});
