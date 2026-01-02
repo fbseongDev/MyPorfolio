@@ -5,6 +5,160 @@ class ImportConventionArchitectureDetail extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [Text('data')]);
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          '필수 사항',
+          style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+        ),
+        SizedBox(height: 12),
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Text('Monorepo, Clean Architecture, Design System'),
+        ),
+        SizedBox(height: 32),
+        Text('목적', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 12),
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 16,
+            children: [
+              Text('1. 로직 구현 시 외부 라이브러리 선택 범위 제한'),
+              Text('2. 표준 인터페이스의 파라미터 및 속성 제한을 통한 사용법 통제'),
+              Text('3. 팀 공통 규칙과 디자인 시스템을 기본으로 적용하면서 사용법은 기존 인터페이스 사용법 유지'),
+              Text('4. 신규 팀원의 빠른 적응과 일관된 코드 작성으로 DX 개선'),
+              Text('5. 멤버 사용처 추적 및 관리 용이성 향상'),
+            ],
+          ),
+        ),
+        SizedBox(height: 32),
+        Text('규칙', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 12),
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 16,
+            children: [
+              Text(
+                '1. Monorepo와 Clean Architecture를 기반으로, 실행 환경과 직접 연결되는 모듈(Runtime Layer)과 팀 공통 규칙을 적용할 모듈(Convention 모듈)을 명확히 구분한다.',
+              ),
+              Text(
+                '2. 실행 환경 모듈(Runtime Layer)에 의존하는 모듈은 Convention 모듈에 의존하지 않아야 한다.',
+              ),
+              Text('3. Convention 모듈이 의존하는 모듈은 Convention 모듈에 의존하지 않아야 한다.'),
+              Text('4. Convention 모듈을 의존하는 모듈은 외부 라이브러리에 의존하지 않아야 한다.'),
+              Text(
+                '5. Convention 모듈은 불필요한 라이브러리에 절대 의존하지 않아야 하며, 필요한 라이브러리도 제한된 멤버만 접근 가능하도록 해야 한다.',
+              ),
+              Text('6. Convention 모듈은 레이어별로 라이브러리 파일을 구분하여 생성한다.'),
+              Text(
+                '7. UI 요소, 기능 함수, 메서드, 설정 객체 등 모든 멤버는 단일 책임 원칙에 따라 동일한 이름과 사용 방식을 유지한 별도 멤버로 매핑하여 사용자가 혼동 없이 동일한 방법으로 접근할 수 있도록 한다.',
+              ),
+              Text(
+                '※ Convention 모듈에서 제공되는 모든 표준 인터페이스(Standard API)는 내부적으로 팀 공통 규칙과 디자인 시스템을 적용하도록 구현되어 있으며, 개발자는 기존 사용법 그대로 사용하기만 하면 자동으로 정책과 스타일이 적용된다.',
+              ),
+            ],
+          ),
+        ),
+
+        SizedBox(height: 32),
+        Text('단점', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 12),
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            spacing: 16,
+            children: [
+              Text('1. Convention으로 구현된 표준 인터페이스는 기본 사용법으로도 구현이 가능하도록 설계해야 함'),
+              Text('2. 아키텍쳐를 처음 접했을 때 표준 인터페이스의 지식이 높을수록 혼란을 겪을 수 있음'),
+            ],
+          ),
+        ),
+
+        SizedBox(height: 32),
+        Text('예시', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+        SizedBox(height: 12),
+        Container(
+          padding: EdgeInsets.all(16),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                '기존 코드',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              SizedBox(height: 16),
+              Code('''
+import 'package:flutter/material.dart';
+
+final widget = ClipRRect(
+  borderRadius: BorderRadius.circular(20),
+  child: BackdropFilter(
+    filter: ImageFilter.blur(sigmaX: 10, sigmaY: 10),
+    child: Container(
+      width: 100,
+      height: 30,
+      decoration: BoxDecoration(
+        color: Colors.white.withOpacity(0.05),
+        border: Border.all(color: Colors.white.withOpacity(0.1)),
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: decoration?.boxShadow,
+      ),
+      child: Text('Hello, world!'),
+    ),
+  ),
+);
+                ''', language: CodeLanguage.dart),
+              SizedBox(height: 24),
+              Text(
+                'Import Convention Architecture 적용 코드',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              SizedBox(height: 16),
+              Code('''
+/**
+ * export 'package:flutter/material.dart' show Text;
+ * export 'package:design_system/design_system' show Container;
+ * . . .
+ */
+import 'package:convention/ui.dart';
+
+final widget = Container(
+  width: 100,
+  height: 30,
+  child: Text('Hello, world!'),
+);
+                ''', language: CodeLanguage.dart),
+
+              SizedBox(height: 24),
+              Package(
+                node: PackageNode(
+                  name: 'root',
+                  children: [
+                    PackageNode(
+                      name: 'apps',
+                      children: [PackageNode(name: 'app1')],
+                    ),
+                    PackageNode(
+                      name: 'packages',
+                      children: [
+                        PackageNode(name: 'feature'),
+                        PackageNode(name: 'convention'),
+                        PackageNode(name: 'design_system'),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+            ],
+          ),
+        ),
+      ],
+    );
   }
 }
