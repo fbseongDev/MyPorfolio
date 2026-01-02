@@ -23,7 +23,7 @@ class ArchitectureGridSection extends HookWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-           Text(
+          Text(
             "Featured Architecture",
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
@@ -83,13 +83,17 @@ class ArchitectureGridSection extends HookWidget {
                     SizedBox(height: 16),
                     TextButton(
                       onPressed: () {
-                        showDialog(context: context, builder: (context){
-                          return architecture.detailPage;
-                        });
+                        showDialog(
+                          context: context,
+                          title: architecture.name,
+                          builder: (context) {
+                            return architecture.detailPage;
+                          },
+                        );
                       },
-                      child:  Text(
+                      child: Text(
                         "View Case Study →",
-                        style:const TextStyle(color: Colors.lightGray),
+                        style: const TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],
