@@ -9,6 +9,7 @@ dependencies:
     sdk: flutter
 
   design_system:
+  flutter_hooks:
 
 dev_dependencies:
   flutter_lints:

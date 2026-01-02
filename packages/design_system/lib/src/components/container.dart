@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart' as m;
+import 'package:design_system/src/foundation/border_radius.dart';
 
 class Container extends m.StatelessWidget {
   final double? width;
@@ -24,7 +25,7 @@ class Container extends m.StatelessWidget {
            m.BoxDecoration(
              color: m.Colors.white.withOpacity(0.05),
              border: m.Border.all(color: m.Colors.white.withOpacity(0.1)),
-             borderRadius: m.BorderRadius.circular(20),
+             borderRadius: BorderRadius.all.normal,
            );
 
   @override

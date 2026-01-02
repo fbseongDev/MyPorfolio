@@ -7,7 +7,7 @@ abstract final class BorderRadius {
 
  class _AllBorderRadiusValues {
   m.BorderRadius max = m.BorderRadius.all(m.Radius.circular(100));
-  m.BorderRadius normal = m.BorderRadius.all(m.Radius.circular(32));
+  m.BorderRadius normal = m.BorderRadius.all(m.Radius.circular(20));
 }
 
 
