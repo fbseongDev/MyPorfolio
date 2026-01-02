@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart' as m;
 
-class TextStyle {
+@m.immutable
+final class TextStyle {
   final double? fontSize;
   final m.FontWeight? fontWeight;
   final m.Color? color;
