@@ -135,6 +135,7 @@ final widget = Container(
 );
                 ''', language: CodeLanguage.dart),
 
+              // todo:: 지금 이거도 UI 꺠지고, 최상단에 apps, packages말고 1개 더 추가하면 왕창 꺠짐
               SizedBox(height: 24),
               Package(
                 node: PackageNode(
@@ -147,11 +148,35 @@ final widget = Container(
                     PackageNode(
                       name: 'packages',
                       children: [
-                        PackageNode(name: 'feature'),
-                        PackageNode(name: 'convention'),
-                        PackageNode(name: 'design_system'),
+                        PackageNode(
+                          name: 'feature',
+                          children: [
+                            PackageNode(name: 'main.dart'),
+                            PackageNode(name: 'pubspec.yaml'),
+                          ],
+                        ),
+                        PackageNode(
+                          name: 'convention',
+                          children: [
+                            PackageNode(name: 'main.dart'),
+                            PackageNode(name: 'pubspec.yaml'),
+                          ],
+                        ),
+                        PackageNode(
+                          name: 'design_system',
+                          children: [
+                            PackageNode(name: 'main.dart'),
+                            PackageNode(name: 'presentation', children: [
+                              PackageNode(name: 'screens', children: [
+                                PackageNode(name: 'main_screen.dart')
+                              ]),
+                            ]),
+                            PackageNode(name: 'pubspec.yaml'),
+                          ],
+                        ),
                       ],
                     ),
+
                   ],
                 ),
               ),

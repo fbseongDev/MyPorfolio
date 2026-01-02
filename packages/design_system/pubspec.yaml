@@ -1,14 +1,14 @@
 name: design_system
 resolution: workspace
 
-version: 0.0.1
-
 environment:
   sdk: ^3.10.3
 
 dependencies:
   flutter:
     sdk: flutter
+
+  utils:
 
 dev_dependencies:
   flutter_lints: ^6.0.0
