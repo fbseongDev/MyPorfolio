@@ -15,12 +15,12 @@ class SkillStackSection extends HookWidget {
         children: [
           Opacity(
             opacity: progress,
-            child: const Column(
+            child:  Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   "Technical Mastery",
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.extraBold,
                     letterSpacing: -1,
@@ -30,7 +30,7 @@ class SkillStackSection extends HookWidget {
                 SizedBox(height: 8),
                 Text(
                   "꾸준히 연마해온 나의 무기들입니다.",
-                  style: TextStyle(color: Colors.lightGray, fontSize: 16),
+                  style:const TextStyle(color: Colors.lightGray, fontSize: 16),
                 ),
               ],
             ),

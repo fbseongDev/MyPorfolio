@@ -40,7 +40,7 @@ class IntroHero extends HookWidget {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  const Text(
+                  Text(
                     'HYESEONG',
                     style: TextStyle(
                       fontSize: 80,

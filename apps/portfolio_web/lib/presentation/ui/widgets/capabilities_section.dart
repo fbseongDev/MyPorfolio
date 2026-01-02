@@ -12,7 +12,7 @@ class CapabilitiesSection extends HookWidget {
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Column(
         children: [
-          const Text(
+           Text(
             "Capabilities",
             style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold),
           ),

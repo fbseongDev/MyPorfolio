@@ -16,10 +16,10 @@ class MainHero extends HookWidget {
               scale: 1 + (progress * 0.5),
               child: Opacity(
                 opacity: (1 - progress),
-                child: const Text(
+                child: Text(
                   "Code is Art\nExperience is Everything",
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold, height: 1.1),
+                  style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
                 ),
               ),
             ),

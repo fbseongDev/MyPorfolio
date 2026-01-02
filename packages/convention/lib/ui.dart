@@ -6,8 +6,6 @@ export 'package:flutter/material.dart'
         EdgeInsets,
         Column,
         CrossAxisAlignment,
-        Text,
-        TextStyle,
         SizedBox,
         ListView,
         NeverScrollableScrollPhysics,

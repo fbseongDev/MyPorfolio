@@ -13,7 +13,7 @@ class ProjectGridSection extends HookWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+           Text(
             "Featured Works",
             style: TextStyle(fontSize: 32, fontWeight: FontWeight.bold),
           ),
@@ -64,9 +64,10 @@ class ProjectGridSection extends HookWidget {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    const Text(
+                     SizedBox(height: 5,),
+                     Text(
                       "혁신적인 UI/UX 프로젝트",
-                      style: TextStyle(
+                      style:const TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -74,9 +75,9 @@ class ProjectGridSection extends HookWidget {
                     const Spacer(),
                     TextButton(
                       onPressed: () {},
-                      child: const Text(
+                      child:  Text(
                         "View Case Study →",
-                        style: TextStyle(color: Colors.lightGray),
+                        style: const TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],
