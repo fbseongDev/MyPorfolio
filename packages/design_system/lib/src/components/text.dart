@@ -1,4 +1,5 @@
 import 'package:design_system/src/foundation/text_style.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart' as m;
 
 class Text extends m.StatelessWidget {
@@ -17,6 +18,9 @@ class Text extends m.StatelessWidget {
 
   @override
   m.Widget build(m.BuildContext context) {
-    return m.Text(data, textAlign: textAlign, style: style);
+    if(kDebugMode){
+      return m.Text(data, textAlign: textAlign, style: style);
+    }
+    return m.SelectableText(data, textAlign: textAlign, style: style);
   }
 }
