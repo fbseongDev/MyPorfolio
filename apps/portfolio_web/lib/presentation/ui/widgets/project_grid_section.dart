@@ -1,7 +1,7 @@
 import 'package:convention/ui.dart';
 
 /// 프로젝트 소개 Section
-class ProjectGridSection extends StatelessWidget {
+class ProjectGridSection extends HookWidget {
   final double progress;
 
   const ProjectGridSection({super.key, required this.progress});

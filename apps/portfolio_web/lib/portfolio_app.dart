@@ -1,7 +1,7 @@
 import 'package:convention/app.dart';
 import 'package:portfolio_web/presentation/ui/pages/intro_page.dart';
 
-class PortfolioApp extends StatelessWidget {
+class PortfolioApp extends HookWidget {
   const PortfolioApp({super.key});
 
   @override

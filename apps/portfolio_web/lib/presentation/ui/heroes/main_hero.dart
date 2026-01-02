@@ -1,6 +1,6 @@
 import 'package:convention/ui.dart';
 
-class MainHero extends StatelessWidget {
+class MainHero extends HookWidget {
   final double progress;
   const MainHero({super.key, required this.progress});
 

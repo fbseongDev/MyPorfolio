@@ -9,40 +9,39 @@ import '../widgets/skill_stack_section.dart';
 /// 메인 페이지
 ///
 /// 전체적인 구조와 스크롤의 기본 배경을 담당하는 page
-class MainPage extends StatefulWidget {
+class MainPage extends HookWidget {
   const MainPage({super.key});
 
   @override
-  State<MainPage> createState() => _MainPageState();
-}
-
-class _MainPageState extends State<MainPage> {
-  final ScrollController _scrollController = ScrollController();
-  double _offset = 0;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController.addListener(
-      () => setState(() => _offset = _scrollController.offset),
-    );
-  }
-
-  double getProgress(final double start, final double end) {
-    return ((_offset - start) / (end - start)).clamp(0.0, 1.0);
-  }
-
-  @override
   Widget build(BuildContext context) {
+    final scrollController = useScrollController();
+    final offset = useState<double>(0);
+
+    double getProgress(final double start, final double end) {
+      return ((offset.value - start) / (end - start)).clamp(0.0, 1.0);
+    }
+
+    useEffect(() {
+      void listener() {
+        offset.value = scrollController.offset;
+      }
+
+      scrollController.addListener(listener);
+
+      return () {
+        scrollController.removeListener(listener);
+      };
+    }, []);
+
     return Stack(
       children: [
         Positioned(
-          top: -100 - (_offset * 0.2),
+          top: -100 - (offset.value * 0.2),
           left: -100,
           child: AmbientCircle(color: Colors.blue.withOpacity(0.2), size: 400),
         ),
         Positioned(
-          bottom: 100 + (_offset * 0.1),
+          bottom: 100 + (offset.value * 0.1),
           right: -50,
           child: AmbientCircle(
             color: Colors.purple.withOpacity(0.2),
@@ -51,7 +50,7 @@ class _MainPageState extends State<MainPage> {
         ),
         // todo:: 이거 ListView로 바꿔 보기
         SingleChildScrollView(
-          controller: _scrollController,
+          controller: scrollController,
           child: Column(
             children: [
               MainHero(progress: getProgress(0, 500)),

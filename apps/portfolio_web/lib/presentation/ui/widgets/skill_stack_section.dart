@@ -1,7 +1,7 @@
 import 'package:convention/ui.dart';
 
 /// 기술 스택 Section
-class SkillStackSection extends StatelessWidget {
+class SkillStackSection extends HookWidget {
   final double progress;
 
   const SkillStackSection({super.key, required this.progress});

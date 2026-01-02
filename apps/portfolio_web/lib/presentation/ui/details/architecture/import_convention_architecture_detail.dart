@@ -1,6 +1,6 @@
 import 'package:convention/ui.dart';
 
-class ImportConventionArchitectureDetail extends StatelessWidget {
+class ImportConventionArchitectureDetail extends HookWidget {
   const ImportConventionArchitectureDetail({super.key});
 
   @override

@@ -3,7 +3,7 @@ import 'package:portfolio_web/presentation/ui/details/architecture/import_conven
 import 'package:portfolio_web/presentation/ui/ui_model/architecture_ui_model.dart';
 
 /// 아키텍쳐 소개 Section
-class ArchitectureGridSection extends StatelessWidget {
+class ArchitectureGridSection extends HookWidget {
   final double progress;
 
   const ArchitectureGridSection({super.key, required this.progress});

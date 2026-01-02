@@ -1,7 +1,7 @@
 import 'package:convention/ui.dart';
 
 /// 특기 소개 Section
-class CapabilitiesSection extends StatelessWidget {
+class CapabilitiesSection extends HookWidget {
   final double progress;
 
   const CapabilitiesSection({super.key, required this.progress});
