@@ -1,4 +1,4 @@
-import 'package:design_system/src/components/text.dart';
+import 'package:design_system/src/components/text/text.dart';
 import 'package:design_system/src/foundation/border_radius.dart';
 import 'package:design_system/src/foundation/colors.dart';
 import 'package:design_system/src/foundation/font_weight.dart';

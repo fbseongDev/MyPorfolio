@@ -1,5 +1,5 @@
 import 'package:design_system/src/components/container.dart';
-import 'package:design_system/src/components/text.dart';
+import 'package:design_system/src/components/text/text.dart';
 import 'package:design_system/src/foundation/border_radius.dart';
 import 'package:design_system/src/foundation/box_decoration.dart';
 import 'package:design_system/src/foundation/colors.dart';
