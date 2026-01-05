@@ -50,3 +50,6 @@ melos:
 
     # ui
     flutter_hooks: ^0.21.3+1
+
+    # util
+    url_launcher: ^6.3.2

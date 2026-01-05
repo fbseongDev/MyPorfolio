@@ -54,3 +54,7 @@ export 'dart:ui' show ImageFilter;
 export 'package:design_system/design_system.dart';
 
 export 'package:flutter_hooks/flutter_hooks.dart';
+
+export 'package:flutter/gestures.dart';
+
+export 'package:url_launcher/url_launcher.dart';
