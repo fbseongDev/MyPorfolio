@@ -134,49 +134,68 @@ final widget = Container(
   child: Text('Hello, world!'),
 );
                 ''', language: CodeLanguage.dart),
-
-              // todo:: 지금 이거도 UI 꺠지고, 최상단에 apps, packages말고 1개 더 추가하면 왕창 꺠짐
               SizedBox(height: 24),
+              Text(
+                '예시 패키지 구조',
+                style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+              ),
+              SizedBox(height: 16),
               Package(
                 node: PackageNode(
-                  name: 'root',
+                  name: 'MyPortfolio',
                   children: [
                     PackageNode(
                       name: 'apps',
-                      children: [PackageNode(name: 'app1')],
+                      children: [
+                        PackageNode(
+                          name: 'portfolio_web',
+                          children: [PackageNode(name: 'main.dart')],
+                        ),
+                      ],
                     ),
                     PackageNode(
                       name: 'packages',
                       children: [
                         PackageNode(
-                          name: 'feature',
-                          children: [
-                            PackageNode(name: 'main.dart'),
-                            PackageNode(name: 'pubspec.yaml'),
-                          ],
-                        ),
-                        PackageNode(
                           name: 'convention',
                           children: [
-                            PackageNode(name: 'main.dart'),
-                            PackageNode(name: 'pubspec.yaml'),
+                            PackageNode(name: 'app.dart'),
+                            PackageNode(name: 'ui.dart'),
                           ],
                         ),
                         PackageNode(
                           name: 'design_system',
                           children: [
-                            PackageNode(name: 'main.dart'),
-                            PackageNode(name: 'presentation', children: [
-                              PackageNode(name: 'screens', children: [
-                                PackageNode(name: 'main_screen.dart')
-                              ]),
-                            ]),
-                            PackageNode(name: 'pubspec.yaml'),
+                            PackageNode(name: 'src', children: []),
+                            PackageNode(name: 'design_system.dart'),
                           ],
                         ),
                       ],
                     ),
+                    PackageNode(name: 'pubspecs.yaml'),
+                    PackageNode(name: '...'),
+                  ],
+                ),
+              ),
+              SizedBox(height: 16),
+              RichText(
+                text: TextSpan(
+                  style: TextStyle(fontSize: 13),
+                  children: [
+                    TextSpan(
+                      text: '실제 MyPortfolio 프로젝트의 패키지 구조 중 일부이며 자세한 코드는 ',
+                    ),
 
+                    TextSpan(
+                      text: 'https://github.com/fbseongDev/MyPorfolio',
+                      style: TextStyle(decoration: TextDecoration.underline),
+                      recognizer: TapGestureRecognizer()
+                        ..onTap = () {
+                          final Uri url = Uri.parse('https://github.com/fbseongDev/MyPorfolio');
+                          launchUrl(url);
+                        }
+                    ),
+                    TextSpan(text: '를 참고해주세요'),
                   ],
                 ),
               ),
