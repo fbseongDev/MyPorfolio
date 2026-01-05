@@ -30,7 +30,9 @@ export 'package:flutter/material.dart'
         MediaQuery,
         Transform,
         Spacer,
-
+        TextSpan,
+        RichText,
+        TextDecoration,
 
 
         Animation,
