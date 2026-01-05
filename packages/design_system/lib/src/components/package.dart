@@ -1,9 +1,8 @@
-import 'package:design_system/src/components/text.dart';
+import 'package:design_system/src/components/text/text.dart';
 import 'package:design_system/src/foundation/border_radius.dart';
 import 'package:design_system/src/foundation/colors.dart';
 import 'package:design_system/src/foundation/text_style.dart';
 import 'package:flutter/material.dart' as m;
-import 'package:utils/utils.dart';
 
 import '../util/package_node.dart';
 
@@ -31,7 +30,8 @@ class _PackageTree extends m.StatelessWidget {
 
   final int columnIndex;
   final int columnLength;
-  final bool isLastColumn;
+  final List<bool> parentIsLasts;
+  final List<String> logs;
 
   const _PackageTree({
     super.key,
@@ -39,10 +39,10 @@ class _PackageTree extends m.StatelessWidget {
     this.depth = 0,
     this.columnIndex = 0,
     this.columnLength = 1,
-    this.isLastColumn = true,
-  });
+    this.parentIsLasts = const [],
 
-  bool get isFolder => node.children != null;
+    this.logs = const ['  '],
+  });
 
   @override
   m.Widget build(m.BuildContext context) {
@@ -52,50 +52,34 @@ class _PackageTree extends m.StatelessWidget {
         m.Row(
           children: [
             m.Row(
-              children: List<m.Widget>.generate(depth, (index) {
-                if (isLastColumn ||  ((depth - 1) != index)) {
-                  return m.SizedBox(width: 16);
-                }
-
-                return m.Row(
-                  children: [
+              children: List.generate(depth, (index) {
+                return [
+                  if (parentIsLasts[index])
                     Text(
                       '│',
                       style: TextStyle(color: Colors.lightGray.withAlpha(100)),
                     ),
-                    m.SizedBox(width: 16),
-                  ],
-                );
-              }),
-              //   .insertBetween(
-              // isLastColumn
-              //     ? m.SizedBox()
-              //     : Text(
-              //         '│',
-              //         style: TextStyle(
-              //           color: Colors.lightGray.withAlpha(100),
-              //         ),
-              //       ),
-              // )
+                  m.SizedBox(width: 16),
+                ];
+              }).expand((e) => e).toList(),
             ),
 
-            // 가로 분기 라인
             if (depth > 0)
               Text(
                 (columnLength - 1) == columnIndex ? '└' : '├',
                 style: TextStyle(color: Colors.lightGray.withAlpha(100)),
               ),
             m.Icon(
-              isFolder ? m.Icons.folder : m.Icons.insert_drive_file,
+              node.isFolder ? m.Icons.folder : m.Icons.insert_drive_file,
               size: 16,
-              color: isFolder ? Colors.blue : Colors.lightGray,
+              color: node.isFolder ? Colors.blue : Colors.lightGray,
             ),
             const m.SizedBox(width: 8),
             m.Text(node.name),
           ],
         ),
 
-        if (isFolder)
+        if (node.isFolder)
           m.Column(
             children: node.children!
                 .asMap()
@@ -106,7 +90,11 @@ class _PackageTree extends m.StatelessWidget {
                     depth: depth + 1,
                     columnIndex: entry.key,
                     columnLength: node.children!.length,
-                    isLastColumn: (columnLength - 1) == columnIndex,
+                    parentIsLasts: [
+                      ...parentIsLasts,
+                      (columnLength - 1) != columnIndex,
+                    ],
+                    logs: [...logs, '(${columnLength - 1}) != $columnIndex'],
                   ),
                 )
                 .toList(),

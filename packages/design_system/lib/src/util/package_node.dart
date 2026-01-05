@@ -8,6 +8,8 @@ final class PackageNode {
   const PackageNode({required this.name, List<PackageNode>? children})
     : _children = children;
 
+  bool get isFolder => _children != null;
+
   List<PackageNode>? get children {
     if (_children == null) return null;
 
