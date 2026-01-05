@@ -6,12 +6,13 @@ export 'src/foundation/text_style.dart';
 
 export 'src/components/button/text_button.dart';
 
+export 'src/components/text/text.dart';
+
 export 'src/components/ambient_circle.dart';
 export 'src/components/code.dart';
 export 'src/components/container.dart';
 export 'src/components/opacity.dart';
 export 'src/components/package.dart';
-export 'src/components/text.dart';
 
 export 'src/util/code_language.dart';
 export 'src/util/package_node.dart';
