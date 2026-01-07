@@ -19,87 +19,87 @@ class Package extends m.StatelessWidget {
         color: Colors.black,
         borderRadius: BorderRadius.all.normal,
       ),
-      child: _PackageTree(node: node),
+      child: _packageTreeBuilder(node: node),
     );
   }
-}
 
-class _PackageTree extends m.StatelessWidget {
-  final PackageNode node;
-  final int depth;
-
-  final int columnIndex;
-  final int columnLength;
-  final List<bool> parentIsLasts;
-  final List<String> logs;
-
-  const _PackageTree({
-    super.key,
-    required this.node,
-    this.depth = 0,
-    this.columnIndex = 0,
-    this.columnLength = 1,
-    this.parentIsLasts = const [],
-
-    this.logs = const ['  '],
-  });
-
-  @override
-  m.Widget build(m.BuildContext context) {
-    return m.Column(
-      crossAxisAlignment: m.CrossAxisAlignment.start,
-      children: [
-        m.Row(
-          children: [
-            m.Row(
-              children: List.generate(depth, (index) {
-                return [
-                  if (parentIsLasts[index])
-                    Text(
-                      '│',
-                      style: TextStyle(color: Colors.lightGray.withAlpha(100)),
-                    ),
-                  m.SizedBox(width: 16),
-                ];
-              }).expand((e) => e).toList(),
-            ),
-
-            if (depth > 0)
-              Text(
-                (columnLength - 1) == columnIndex ? '└' : '├',
-                style: TextStyle(color: Colors.lightGray.withAlpha(100)),
+  m.Widget _packageTreeBuilder({
+    required final PackageNode node,
+    final int depth = 0,
+    final int columnIndex = 0,
+    final int columnLength = 1,
+    final List<bool> parentIsLasts = const [],
+  }) => m.Builder(
+    builder: (context) {
+      return m.Column(
+        crossAxisAlignment: m.CrossAxisAlignment.start,
+        children: [
+          m.Row(
+            children: [
+              m.Row(
+                children: List.generate(depth, (index) {
+                  return [
+                    if (index != 0)
+                      Text(
+                        '│',
+                        style: TextStyle(
+                          color: parentIsLasts[index]
+                              ? Colors.lightGray.withAlpha(100)
+                              : Colors.transparent,
+                        ),
+                      ),
+                    m.Container(width: 16),
+                  ];
+                }).expand((e) => e).toList(),
               ),
-            m.Icon(
-              node.isFolder ? m.Icons.folder : m.Icons.insert_drive_file,
-              size: 16,
-              color: node.isFolder ? Colors.blue : Colors.lightGray,
-            ),
-            const m.SizedBox(width: 8),
-            m.Text(node.name),
-          ],
-        ),
 
-        if (node.isFolder)
-          m.Column(
-            children: node.children!
-                .asMap()
-                .entries
-                .map(
-                  (entry) => _PackageTree(
-                    node: entry.value,
-                    depth: depth + 1,
-                    columnIndex: entry.key,
-                    columnLength: node.children!.length,
-                    parentIsLasts: [
-                      ...parentIsLasts,
-                      (columnLength - 1) != columnIndex,
-                    ],
-                    logs: [...logs, '(${columnLength - 1}) != $columnIndex'],
-                  ),
-                )
-                .toList(),
+              if (depth > 0)
+                Text(
+                  (columnLength - 1) == columnIndex ? '└' : '├',
+                  style: TextStyle(color: Colors.lightGray.withAlpha(100)),
+                ),
+              m.Icon(
+                node.isFolder ? m.Icons.folder : m.Icons.insert_drive_file,
+                size: 16,
+                color: node.isFolder ? Colors.blue : Colors.lightGray,
+              ),
+              const m.SizedBox(width: 8),
+              m.Text.rich(
+                m.TextSpan(
+                  children: [
+                    m.TextSpan(text: node.name),
+                    if (node.comment != null)
+                      m.TextSpan(
+                        text: '  # ${node.comment}',
+                        style: TextStyle(color: Colors.lightGray,fontSize: 11.5),
+                      ),
+                  ],
+                ),
+              ),
+            ],
           ),
-      ],
-    );
-  }
+
+          if (node.isFolder)
+            m.Column(
+              children: node.children!
+                  .asMap()
+                  .entries
+                  .map(
+                    (entry) => _packageTreeBuilder(
+                      node: entry.value,
+                      depth: depth + 1,
+                      columnIndex: entry.key,
+                      columnLength: node.children!.length,
+                      parentIsLasts: [
+                        ...parentIsLasts,
+                        (columnLength - 1) != columnIndex,
+                      ],
+                    ),
+                  )
+                  .toList(),
+            ),
+        ],
+      );
+    },
+  );
 }
