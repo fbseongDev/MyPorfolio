@@ -107,13 +107,11 @@ final widget = ClipRRect(
         color: Colors.white.withOpacity(0.05),
         border: Border.all(color: Colors.white.withOpacity(0.1)),
         borderRadius: BorderRadius.circular(20),
-        boxShadow: decoration?.boxShadow,
       ),
       child: Text('Hello, world!'),
     ),
   ),
-);
-                ''', language: CodeLanguage.dart),
+);''', language: CodeLanguage.dart),
               SizedBox(height: 24),
               Text(
                 'Import Convention Architecture 적용 코드',
@@ -121,19 +119,15 @@ final widget = ClipRRect(
               ),
               SizedBox(height: 16),
               Code('''
-/**
- * export 'package:flutter/material.dart' show Text;
- * export 'package:design_system/design_system' show Container;
- * . . .
- */
+// export 'package:flutter/material.dart' show Text;
+// export 'package:design_system/design_system' show Container;
 import 'package:convention/ui.dart';
 
 final widget = Container(
   width: 100,
   height: 30,
   child: Text('Hello, world!'),
-);
-                ''', language: CodeLanguage.dart),
+);''', language: CodeLanguage.dart),
               SizedBox(height: 24),
               Text(
                 '예시 패키지 구조',
@@ -162,25 +156,27 @@ final widget = Container(
                             PackageNode(name: 'app.dart'),
                             PackageNode(name: 'ui.dart'),
                           ],
+                          comment: 'design_system을 의존'
                         ),
                         PackageNode(
                           name: 'design_system',
                           children: [
-                            PackageNode(name: 'src', children: []),
+                            PackageNode(name: 'src', children: [
+                              PackageNode(name: 'container.dart')
+                            ]),
                             PackageNode(name: 'design_system.dart'),
                           ],
                         ),
                       ],
                     ),
                     PackageNode(name: 'pubspecs.yaml'),
-                    PackageNode(name: '...'),
                   ],
                 ),
               ),
               SizedBox(height: 16),
               RichText(
                 text: TextSpan(
-                  style: TextStyle(fontSize: 13),
+                  style: TextStyle(fontSize: 13, color: Colors.white),
                   children: [
                     TextSpan(
                       text: '실제 MyPortfolio 프로젝트의 패키지 구조 중 일부이며 자세한 코드는 ',
