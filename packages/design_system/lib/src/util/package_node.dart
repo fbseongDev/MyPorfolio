@@ -4,8 +4,9 @@ import 'package:flutter/cupertino.dart';
 final class PackageNode {
   final String name;
   final List<PackageNode>? _children;
+  final String? comment;
 
-  const PackageNode({required this.name, List<PackageNode>? children})
+  const PackageNode({required this.name, List<PackageNode>? children, this.comment})
     : _children = children;
 
   bool get isFolder => _children != null;
