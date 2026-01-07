@@ -14,6 +14,10 @@ export 'src/components/container.dart';
 export 'src/components/opacity.dart';
 export 'src/components/package.dart';
 
-export 'src/util/code_language.dart';
+export 'src/util/code/code_column.dart';
+export 'src/util/code/code_language.dart';
+export 'src/util/code/code_plane.dart';
+export 'src/util/code/code_row.dart';
+
 export 'src/util/package_node.dart';
 export 'src/util/show_dialog.dart';
