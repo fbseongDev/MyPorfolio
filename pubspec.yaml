@@ -35,11 +35,11 @@ melos:
     deploy:web:
       description: Flutter web GitHub Pages Deploy
       run: |
-        cd packages/portfolio_web
-        flutter build web --base-href "/레포이름/"
+        cd apps/portfolio_web
+        flutter build web --base-href "/MyPortfolio/"
         cd ../../
-        rm -rf docs
-        cp -r packages/portfolio_web/build/web docs  
+        rm docs
+        cp -r apps/portfolio_web/build/web docs
 
   versionOverrides:
     # dev_dependencies
