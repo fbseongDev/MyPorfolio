@@ -1,7 +1,6 @@
 import 'package:design_system/src/util/code/code_column.dart';
 import 'package:design_system/src/util/code/code_row.dart';
-import 'package:utils/extensions/list_extension.dart';
-import 'package:utils/extensions/string_extension.dart';
+import 'package:utils/utils.dart';
 
 class CodePlane {
   final List<CodeColumn> codeColumns;
@@ -72,7 +71,17 @@ class CodePlane {
         if (CodeKeyword.keywords.contains(word)) return CodeKeyword(word);
 
         // 클래스인지 체크
-        final isClass = RegExp(r'^[A-Z]').hasMatch(word) && nextWord == '(';
+        final isClass =
+            RegExp(r'^[A-Z]').hasMatch(word) &&
+            (nextWord == '(' ||
+                words.let((e) {
+                  final prevWord = words.elementAtOrNull(entry.key - 1);
+                  final prevOverWord = words.elementAtOrNull(entry.key - 2);
+
+                  if (prevWord == ' ' && prevOverWord == 'class') return true;
+
+                  return false;
+                }));
         if (isClass) return CodeClass(word);
 
         // 메서드인지 체크
