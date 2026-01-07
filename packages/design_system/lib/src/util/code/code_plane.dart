@@ -70,6 +70,9 @@ class CodePlane {
         // 키워드인지 체크
         if (CodeKeyword.keywords.contains(word)) return CodeKeyword(word);
 
+        final isAnnotation = RegExp(r'^@').hasMatch(word);
+        if(isAnnotation) return CodeAnnotation(word);
+
         // 클래스인지 체크
         final isClass =
             RegExp(r'^[A-Z]').hasMatch(word) &&

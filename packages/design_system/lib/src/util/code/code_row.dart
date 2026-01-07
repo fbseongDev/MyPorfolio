@@ -79,5 +79,14 @@ class CodeKeyword extends CodeRow {
     'continue',
     'default',
     'do',
+    'required',
+    'this'
   ];
+}
+
+class CodeAnnotation extends CodeRow {
+  const CodeAnnotation(super.code);
+
+  @override
+  Color get color => m.Colors.lime.shade300;
 }
