@@ -1,4 +1,5 @@
 import 'package:design_system/src/components/container.dart';
+import 'package:design_system/src/components/icon.dart';
 import 'package:design_system/src/components/text/text.dart';
 import 'package:design_system/src/foundation/border_radius.dart';
 import 'package:design_system/src/foundation/box_decoration.dart';
@@ -15,10 +16,10 @@ Future<T?> showDialog<T>({
 }) async {
   return await m.showDialog<T>(
     context: context,
-    barrierColor: Colors.white.withAlpha(30),
+    barrierColor: Colors.white.alpha10.toMaterialColor(),
     builder: (context) {
       return m.Dialog(
-        backgroundColor: Colors.transparent,
+        backgroundColor: Colors.transparent.toMaterialColor(),
         shape: m.RoundedRectangleBorder(borderRadius: BorderRadius.all.normal),
         clipBehavior: m.Clip.hardEdge,
         insetPadding: m.EdgeInsets.all(
@@ -50,7 +51,7 @@ Future<T?> showDialog<T>({
                         onTap: () {
                           m.Navigator.pop(context);
                         },
-                        child: m.Icon(
+                        child: Icon(
                           c.CupertinoIcons.clear_circled_solid,
                           size: 30,
                           color: Colors.white,

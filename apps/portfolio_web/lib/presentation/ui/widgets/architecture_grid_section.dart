@@ -1,5 +1,6 @@
 import 'package:convention/ui.dart';
 import 'package:portfolio_web/presentation/ui/details/architecture/import_convention_architecture_detail.dart';
+import 'package:portfolio_web/presentation/ui/details/architecture/ltd_architecture_detail.dart';
 import 'package:portfolio_web/presentation/ui/ui_model/architecture_ui_model.dart';
 
 /// 아키텍쳐 소개 Section
@@ -14,6 +15,11 @@ class ArchitectureGridSection extends HookWidget {
       description: '어떤 누가 개발해도 UI, Convention, Code 유지가 가능을 위한 아키텍쳐',
       detailPage: ImportConventionArchitectureDetail(),
     ),
+    ArchitectureUiModel(
+      name: 'LTD Architecture',
+      description: 'List와 Detail의 자연스러운 상태관리를 위한 아키텍쳐',
+      detailPage: LtdArchitectureDetail()
+    )
   ];
 
   @override
@@ -57,7 +63,7 @@ class ArchitectureGridSection extends HookWidget {
                 child: Icon(
                   Icons.architecture,
                   size: 100,
-                  color: Colors.white.withOpacity(0.03),
+                  color: Colors.white.alpha10,
                 ),
               ),
               Padding(
@@ -67,7 +73,7 @@ class ArchitectureGridSection extends HookWidget {
                   children: [
                     Text(
                       architecture.name,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -75,7 +81,7 @@ class ArchitectureGridSection extends HookWidget {
                     SizedBox(height: 5),
                     Text(
                       architecture.description,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 16,
                         fontWeight: FontWeight.thin,
                       ),
@@ -93,7 +99,7 @@ class ArchitectureGridSection extends HookWidget {
                       },
                       child: Text(
                         "View Case Study →",
-                        style: const TextStyle(color: Colors.lightGray),
+                        style: TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],

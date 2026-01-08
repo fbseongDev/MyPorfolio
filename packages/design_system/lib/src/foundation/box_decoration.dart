@@ -1,18 +1,26 @@
+import 'package:design_system/src/foundation/box_shadow.dart';
+import 'package:design_system/src/foundation/color.dart';
 import 'package:flutter/material.dart' as m;
 
 @m.immutable
 final class BoxDecoration extends m.BoxDecoration {
-  // final m.Color? color;
-  // final m.BorderRadius? borderRadius;
-  // final m.Border? border;
-  // final List<m.BoxShadow>? boxShadow;
-  // final m.BoxShape shape;
-
-  const BoxDecoration({
-    super.color,
+  BoxDecoration({
+    Color? color,
     super.borderRadius,
     super.border,
-    super.boxShadow,
+    List<BoxShadow>? boxShadow,
     super.shape,
-  });
+  }) : super(
+         color: color?.toMaterialColor(),
+         boxShadow: boxShadow
+             ?.map(
+               (e) => m.BoxShadow(
+                 color: e.color.toMaterialColor(),
+                 blurRadius: e.blurRadius,
+                 spreadRadius: e.spreadRadius,
+                 offset: e.offset,
+               ),
+             )
+             .toList(),
+       );
 }

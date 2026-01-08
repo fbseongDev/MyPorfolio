@@ -20,7 +20,7 @@ class SkillStackSection extends HookWidget {
               children: [
                 Text(
                   "Technical Mastery",
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 32,
                     fontWeight: FontWeight.extraBold,
                     letterSpacing: -1,
@@ -30,7 +30,7 @@ class SkillStackSection extends HookWidget {
                 SizedBox(height: 8),
                 Text(
                   "꾸준히 연마해온 나의 무기들입니다.",
-                  style:const TextStyle(color: Colors.lightGray, fontSize: 16),
+                  style: TextStyle(color: Colors.lightGray, fontSize: 16),
                 ),
               ],
             ),
@@ -97,7 +97,7 @@ class SkillStackSection extends HookWidget {
                   // 텍스트
                   Text(
                     title,
-                    style: const TextStyle(
+                    style:  TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.bold,
                       color: Colors.white,
@@ -135,12 +135,12 @@ class SkillStackSection extends HookWidget {
             children: [
               Text(
                 skills[index],
-                style: const TextStyle(color: Colors.lightGray, fontSize: 14),
+                style: TextStyle(color: Colors.lightGray, fontSize: 14),
               ),
               Text(
                 "${(levels[index] * 100).toInt()}%",
                 style: TextStyle(
-                  color: accentColor.withOpacity(0.8),
+                  color: accentColor.alpha10,
                   fontSize: 12,
                   fontWeight: FontWeight.bold,
                 ),
@@ -154,7 +154,7 @@ class SkillStackSection extends HookWidget {
                 height: 4,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.white.withAlpha(10),
+                  color: Colors.white.alpha10,
                   borderRadius: BorderRadius.all.max,
                 ),
               ),
@@ -167,7 +167,7 @@ class SkillStackSection extends HookWidget {
                   borderRadius: BorderRadius.all.max,
                   boxShadow: [
                     BoxShadow(
-                      color: accentColor.withOpacity(0.3),
+                      color: accentColor.alpha10,
                       blurRadius: 4,
                       spreadRadius: 1,
                     ),

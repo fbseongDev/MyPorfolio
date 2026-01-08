@@ -49,7 +49,7 @@ class ProjectGridSection extends HookWidget {
                 child: Icon(
                   Icons.app_shortcut,
                   size: 200,
-                  color: Colors.white.withOpacity(0.03),
+                  color: Colors.white.alpha10,
                 ),
               ),
               Padding(
@@ -59,7 +59,7 @@ class ProjectGridSection extends HookWidget {
                   children: [
                     Text(
                       "Project 0${index + 1}",
-                      style: const TextStyle(
+                      style:  TextStyle(
                         color: Colors.blue,
                         fontWeight: FontWeight.bold,
                       ),
@@ -67,7 +67,7 @@ class ProjectGridSection extends HookWidget {
                      SizedBox(height: 5,),
                      Text(
                       "혁신적인 UI/UX 프로젝트",
-                      style:const TextStyle(
+                      style: TextStyle(
                         fontSize: 24,
                         fontWeight: FontWeight.bold,
                       ),
@@ -77,7 +77,7 @@ class ProjectGridSection extends HookWidget {
                       onPressed: () {},
                       child:  Text(
                         "View Case Study →",
-                        style: const TextStyle(color: Colors.lightGray),
+                        style:  TextStyle(color: Colors.lightGray),
                       ),
                     ),
                   ],

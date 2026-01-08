@@ -11,7 +11,6 @@ export 'package:flutter/material.dart'
         NeverScrollableScrollPhysics,
         Stack,
         Positioned,
-        Icon,
         Icons,
         Wrap,
         Builder,
@@ -20,9 +19,7 @@ export 'package:flutter/material.dart'
         IconData,
         Row,
         BoxShape,
-        Color,
         AnimatedContainer,
-        BoxShadow,
         VoidCallback,
         Center,
         ImageFiltered,
@@ -30,8 +27,6 @@ export 'package:flutter/material.dart'
         MediaQuery,
         Transform,
         Spacer,
-        TextSpan,
-        RichText,
         TextDecoration,
 
 
@@ -43,7 +38,6 @@ export 'package:flutter/material.dart'
         AnimatedBuilder,
 
 
-        Scaffold,
         AnimatedSwitcher,
         ValueKey,
         Curves,
@@ -56,5 +50,3 @@ export 'package:design_system/design_system.dart';
 export 'package:flutter_hooks/flutter_hooks.dart';
 
 export 'package:flutter/gestures.dart';
-
-export 'package:url_launcher/url_launcher.dart';

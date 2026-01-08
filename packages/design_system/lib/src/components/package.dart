@@ -1,4 +1,6 @@
+import 'package:design_system/src/components/icon.dart';
 import 'package:design_system/src/components/text/text.dart';
+import 'package:design_system/src/components/text/text_span.dart';
 import 'package:design_system/src/foundation/border_radius.dart';
 import 'package:design_system/src/foundation/colors.dart';
 import 'package:design_system/src/foundation/text_style.dart';
@@ -16,7 +18,7 @@ class Package extends m.StatelessWidget {
     return m.Container(
       padding: const m.EdgeInsets.all(16),
       decoration: m.BoxDecoration(
-        color: Colors.black,
+        color: Colors.black.toMaterialColor(),
         borderRadius: BorderRadius.all.normal,
       ),
       child: _packageTreeBuilder(node: node),
@@ -44,7 +46,7 @@ class Package extends m.StatelessWidget {
                         '│',
                         style: TextStyle(
                           color: parentIsLasts[index]
-                              ? Colors.lightGray.withAlpha(100)
+                              ? Colors.lightGray.alpha40
                               : Colors.transparent,
                         ),
                       ),
@@ -56,20 +58,20 @@ class Package extends m.StatelessWidget {
               if (depth > 0)
                 Text(
                   (columnLength - 1) == columnIndex ? '└' : '├',
-                  style: TextStyle(color: Colors.lightGray.withAlpha(100)),
+                  style: TextStyle(color: Colors.lightGray.alpha40),
                 ),
-              m.Icon(
+              Icon(
                 node.isFolder ? m.Icons.folder : m.Icons.insert_drive_file,
                 size: 16,
                 color: node.isFolder ? Colors.blue : Colors.lightGray,
               ),
               const m.SizedBox(width: 8),
-              m.Text.rich(
-                m.TextSpan(
+              Text.rich(
+                TextSpan(
                   children: [
-                    m.TextSpan(text: node.name),
+                    TextSpan(text: node.name),
                     if (node.comment != null)
-                      m.TextSpan(
+                      TextSpan(
                         text: '  # ${node.comment}',
                         style: TextStyle(color: Colors.lightGray,fontSize: 11.5),
                       ),

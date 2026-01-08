@@ -38,17 +38,16 @@ class MainPage extends HookWidget {
         Positioned(
           top: -100 - (offset.value * 0.2),
           left: -100,
-          child: AmbientCircle(color: Colors.blue.withOpacity(0.2), size: 400),
+          child: AmbientCircle(color: Colors.blue.alpha10, size: 400),
         ),
         Positioned(
           bottom: 100 + (offset.value * 0.1),
           right: -50,
           child: AmbientCircle(
-            color: Colors.purple.withOpacity(0.2),
+            color: Colors.purple.alpha10,
             size: 300,
           ),
         ),
-        // todo:: 이거 ListView로 바꿔 보기
         SingleChildScrollView(
           controller: scrollController,
           child: Column(

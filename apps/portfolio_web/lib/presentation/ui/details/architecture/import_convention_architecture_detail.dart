@@ -174,8 +174,8 @@ final widget = Container(
                 ),
               ),
               SizedBox(height: 16),
-              RichText(
-                text: TextSpan(
+              Text.rich(
+                TextSpan(
                   style: TextStyle(fontSize: 13, color: Colors.white),
                   children: [
                     TextSpan(
@@ -185,11 +185,7 @@ final widget = Container(
                     TextSpan(
                       text: 'https://github.com/fbseongDev/MyPorfolio',
                       style: TextStyle(decoration: TextDecoration.underline),
-                      recognizer: TapGestureRecognizer()
-                        ..onTap = () {
-                          final Uri url = Uri.parse('https://github.com/fbseongDev/MyPorfolio');
-                          launchUrl(url);
-                        }
+                      type: TextSpanType.hyperLink
                     ),
                     TextSpan(text: '를 참고해주세요'),
                   ],

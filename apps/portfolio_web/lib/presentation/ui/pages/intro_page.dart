@@ -14,7 +14,6 @@ class IntroPage extends HookWidget {
   Widget build(BuildContext context) {
   final introDone = useState(false);
     return Scaffold(
-      backgroundColor: Colors.black,
       body: AnimatedSwitcher(
         duration: const Duration(milliseconds: 1200),
         switchInCurve: Curves.easeInOutQuart,

@@ -1,11 +1,11 @@
-import 'dart:ui';
-
 import 'package:design_system/design_system.dart';
+import 'package:design_system/src/foundation/color.dart';
 import 'package:design_system/src/foundation/colors.dart';
 import 'package:flutter/material.dart' as m;
 
 sealed class CodeRow {
   final String code;
+
   const CodeRow(this.code);
 
   abstract final Color color;
@@ -22,35 +22,35 @@ class CodeComment extends CodeRow {
   const CodeComment(super.code);
 
   @override
-  Color get color => m.Colors.grey;
+  Color get color => Color.fromMaterialColor(m.Colors.grey);
 }
 
 class CodeClass extends CodeRow {
   const CodeClass(super.code);
 
   @override
-  Color get color => m.Colors.lightBlueAccent;
+  Color get color => Color.fromMaterialColor(m.Colors.lightBlueAccent);
 }
 
 class CodeMethod extends CodeRow {
   const CodeMethod(super.code);
 
   @override
-  Color get color => m.Colors.lightBlueAccent;
+  Color get color => Color.fromMaterialColor(m.Colors.lightBlueAccent);
 }
 
 class CodeString extends CodeRow {
   const CodeString(super.code);
 
   @override
-  Color get color => m.Colors.lightGreen;
+  Color get color => Color.fromMaterialColor(m.Colors.lightGreen);
 }
 
 class CodeNumber extends CodeRow {
   const CodeNumber(super.code);
 
   @override
-  Color get color => m.Colors.cyanAccent;
+  Color get color => Color.fromMaterialColor(m.Colors.cyanAccent);
 }
 
 class CodeKeyword extends CodeRow {
@@ -80,7 +80,7 @@ class CodeKeyword extends CodeRow {
     'default',
     'do',
     'required',
-    'this'
+    'this',
   ];
 }
 
@@ -88,5 +88,5 @@ class CodeAnnotation extends CodeRow {
   const CodeAnnotation(super.code);
 
   @override
-  Color get color => m.Colors.lime.shade300;
+  Color get color => Color.fromMaterialColor(m.Colors.lime.shade300);
 }

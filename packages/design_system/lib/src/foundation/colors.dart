@@ -1,15 +1,17 @@
-import 'package:flutter/material.dart' as  m;
+import 'package:design_system/src/foundation/color.dart';
+import 'package:flutter/material.dart' as m;
 
 abstract final class Colors {
-  static const m.Color white = m.Colors.white;
-  static const m.Color black = m.Colors.black;
-  static const m.Color purple = m.Colors.purple;
-  static const m.Color transparent = m.Colors.transparent;
+  static final Color white = Color.fromMaterialColor(m.Colors.white);
+  static final Color black = Color.fromMaterialColor(m.Colors.black);
+  static final Color purple = Color.fromMaterialColor(m.Colors.purple);
+  static final Color transparent = Color.fromMaterialColor(
+    m.Colors.transparent,
+  );
 
-  static const m.Color blue = m.Colors.blueAccent;
-  static const m.Color green = m.Colors.greenAccent;
-  static const m.Color orange = m.Colors.orangeAccent;
+  static final Color blue = Color.fromMaterialColor(m.Colors.blueAccent);
+  static final Color green = Color.fromMaterialColor(m.Colors.greenAccent);
+  static final Color orange = Color.fromMaterialColor(m.Colors.orangeAccent);
 
-  static const m.Color lightGray = m.Colors.white70;
-
+  static final Color lightGray = Color.fromMaterialColor(m.Colors.white70);
 }

@@ -1,3 +1,4 @@
+import 'package:design_system/src/foundation/colors.dart';
 import 'package:flutter/material.dart' as m;
 
 class TextButton extends m.StatelessWidget {
@@ -10,6 +11,11 @@ class TextButton extends m.StatelessWidget {
   m.Widget build(m.BuildContext context) {
     return m.TextButton(
       onPressed: onPressed,
+      style: m.ButtonStyle(
+        overlayColor: m.WidgetStateColor.resolveWith(
+          (states) => Colors.white.alpha20.toMaterialColor(),
+        ),
+      ),
       child: m.IgnorePointer(child: child),
     );
   }
