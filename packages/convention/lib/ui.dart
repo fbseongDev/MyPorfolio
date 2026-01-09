@@ -41,7 +41,7 @@ export 'package:flutter/material.dart'
         AnimatedSwitcher,
         ValueKey,
         Curves,
-        SingleChildScrollView;
+        SingleChildScrollView, WidgetBuilder;
 
 export 'dart:ui' show ImageFilter;
 
