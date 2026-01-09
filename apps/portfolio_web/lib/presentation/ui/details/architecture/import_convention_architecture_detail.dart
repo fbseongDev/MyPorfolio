@@ -12,25 +12,23 @@ class ImportConventionArchitectureDetail extends HookWidget {
       spacing: 32,
       children: [
         _requiredContent(),
-        _purposeBuilder(),
-        _ruleBuilder(),
-        _weaknessBuilder(),
+        _purposeContent(),
+        _ruleContent(),
+        _weaknessContent(),
         _exampleBuilder(),
       ],
     );
   }
 
-  Widget _requiredContent() => ArchitectureExplainFiled.content(
+   Widget _requiredContent() => ArchitectureExplainFiled.content(
     title: '필수 사항',
     content: '''
 Monorepo, Clean Architecture, Design System''',
   );
 
-  Widget _purposeBuilder() => Builder(
-    builder: (context) {
-      return ArchitectureExplainFiled.content(
-        title: '목적',
-        content: '''
+  Widget _purposeContent() => ArchitectureExplainFiled.content(
+    title: '목적',
+    content: '''
 1. 로직 구현 시 외부 라이브러리 선택 범위 제한
 
 2. 표준 인터페이스의 파라미터 및 속성 제한을 통한 사용법 통제
@@ -40,15 +38,11 @@ Monorepo, Clean Architecture, Design System''',
 4. 신규 팀원의 빠른 적응과 일관된 코드 작성으로 DX 개선
 
 5. 멤버 사용처 추적 및 관리 용이성 향상''',
-      );
-    },
   );
 
-  Widget _ruleBuilder() => Builder(
-    builder: (context) {
-      return ArchitectureExplainFiled.content(
-        title: '규칙',
-        content: '''
+  Widget _ruleContent() => ArchitectureExplainFiled.content(
+    title: '규칙',
+    content: '''
 1. Monorepo와 Clean Architecture를 기반으로, 실행 환경과 직접 연결되는 모듈(Runtime Layer)과 팀 공통 규칙을 적용할 모듈(Convention 모듈)을 명확히 구분한다.                
 
 2. 실행 환경 모듈(Runtime Layer)에 의존하는 모듈은 Convention 모듈에 의존하지 않아야 한다.
@@ -65,25 +59,20 @@ Monorepo, Clean Architecture, Design System''',
 
 
 ※ Convention 모듈에서 제공되는 모든 표준 인터페이스(Standard API)는 내부적으로 팀 공통 규칙과 디자인 시스템을 적용하도록 구현되어 있으며, 개발자는 기존 사용법 그대로 사용하기만 하면 자동으로 정책과 스타일이 적용된다.''',
-      );
-    },
   );
 
-  Widget _weaknessBuilder() => Builder(
-    builder: (context) {
-      return ArchitectureExplainFiled.content(
-        title: '단점',
-        content: '''
+  Widget _weaknessContent() => ArchitectureExplainFiled.content(
+    title: '단점',
+    content: '''
 1. Convention으로 구현된 표준 인터페이스는 기본 사용법으로도 구현이 가능하도록 설계해야 함
 
 2. 아키텍쳐를 처음 접했을 때 표준 인터페이스의 지식이 높을수록 혼란을 겪을 수 있음''',
-      );
-    },
   );
 
   Widget _exampleBuilder() => ArchitectureExplainFiled.builder(
     title: '예시',
     builder: (context) {
+
       return Column(
         spacing: 24,
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,7 +131,7 @@ final widget = Container(
             spacing: 16,
             children: [
               Text(
-                '예시 패키지 구조',
+                '예시 패키지 ',
                 style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
               ),
               Package(
