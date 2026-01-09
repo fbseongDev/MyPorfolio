@@ -10,6 +10,7 @@ dependencies:
 
   design_system:
   flutter_hooks:
+  utils:
 
 dev_dependencies:
   flutter_lints:

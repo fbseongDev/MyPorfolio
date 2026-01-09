@@ -53,3 +53,4 @@ melos:
 
     # util
     url_launcher: ^6.3.2
+    collection: ^1.19.1
