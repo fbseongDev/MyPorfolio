@@ -1,10 +1,10 @@
 import 'package:convention/ui.dart';
-import 'package:portfolio_web/presentation/ui/widgets/architecture_grid_section.dart';
-import 'package:portfolio_web/presentation/ui/widgets/project_grid_section.dart';
+import 'package:portfolio_web/presentation/ui/sections/architecture_grid_section.dart';
+import 'package:portfolio_web/presentation/ui/sections/project_grid_section.dart';
 
 import '../heroes/main_hero.dart';
-import '../widgets/capabilities_section.dart';
-import '../widgets/skill_stack_section.dart';
+import '../sections/capabilities_section.dart';
+import '../sections/skill_stack_section.dart';
 
 /// 메인 페이지
 ///
