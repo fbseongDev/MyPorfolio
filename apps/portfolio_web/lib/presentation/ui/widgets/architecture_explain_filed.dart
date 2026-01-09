@@ -13,19 +13,15 @@ class ArchitectureExplainFiled extends HookWidget {
   factory ArchitectureExplainFiled.content({
     required final String title,
     required final String content,
-  }) {
-    return ArchitectureExplainFiled._(title: title, field: Text(content));
-  }
+  }) => ArchitectureExplainFiled._(title: title, field: Text(content));
 
   factory ArchitectureExplainFiled.builder({
     required final String title,
     required final WidgetBuilder builder,
-  }) {
-    return ArchitectureExplainFiled._(
-      title: title,
-      field: Builder(builder: builder),
-    );
-  }
+  }) => ArchitectureExplainFiled._(
+    title: title,
+    field: Builder(builder: builder),
+  );
 
   @override
   Widget build(BuildContext context) {
